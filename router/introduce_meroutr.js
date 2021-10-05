@@ -1,4 +1,5 @@
 const controllers = require("../controller/introduce_mecontroller");
+const upload = require('./uploadfile');
 
 const routes = [
   {
@@ -14,11 +15,13 @@ const routes = [
   {
     method: "POST",
     url: "/api/introduce",
+    preHandler:upload.single('picture'),
     handler: controllers.saveintroduce,
   },
   {
     method: "PUT",
     url: "/api/introduce/:id",
+    preHandler:upload.single('picture'),
     handler: controllers.updateintroduce,
   },
   {
